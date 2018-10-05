@@ -66,8 +66,11 @@
 
 % --- New Math Commands and Environments ---------------------------
 % --- Symbols
-\newcommand{\diag}{\mathrm{diag}}  % Diagonal matrix
+\DeclareMathOperator{\diag}{diag}  % Diagonal matrix
+\DeclareMathOperator{\mspan}{span}  % Spanning space
+\DeclareMathOperator{\rank}{rank}  % Rank
 \newcommand{\trans}{\mathrm{T}}  % Transpose
+\newcommand{\ctrans}{\mathrm{*}}  % Conjugate transpose
 \newcommand{\mo}[1]{\left| {#1} \right|}  % Mod
 \newcommand{\norm}[1]{\left\| {#1} \right\|}  % Norm
 \newcommand{\numset}{\mathbb}  % Number sets
@@ -79,8 +82,11 @@
 \newcommand{\st}{\, \mathrm{s.t.} \,}  % "So that"
 \newcommand{\diff}{\mathop{}\!\mathrm{d}}  % Differentiation
 \newcommand{\pdiff}{\mathop{}\!\partial}  % Partial diff
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
 \DeclareMathOperator*{\argmax}{argmax}  % argmax
 \DeclareMathOperator*{\argmin}{argmin}  % argmin
+\renewcommand{\qed}{\hfill\ensuremath{\square}}  % End of proof
 % --- Theorem environments
 {
   \theorembodyfont{\itshape}
@@ -110,15 +116,15 @@
 % --- Engineering Settings -----------------------------------------
 % --- Code
 \lstset{
-  columns=fullflexible, % 调整字距
-  basicstyle=\ttfamily, % 调整主字体
-  keepspaces=true, % 保持原代码空格数
-  showstringspaces=false, % 不显示原代码空格占位符
-  numbers=left, % 显示行号
-  numberstyle=\footnotesize\ttfamily\color{gray}, % 调整行号格式
-  frame=none, % 不显示边框
-  commentstyle=\ttfamily\color{gray}, % 调整注释格式
-  defaultdialect=[LaTeX]TeX % 使用 LaTeX 为 TeX 默认方言
+  columns=fullflexible,
+  basicstyle=\ttfamily,
+  keepspaces=true,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\footnotesize\ttfamily\color{gray},
+  frame=none,
+  commentstyle=\ttfamily\color{gray},
+  defaultdialect=[LaTeX]TeX
 }
 % Pseudocode
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em%
