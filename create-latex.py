@@ -23,6 +23,6 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-os.system("cp ~/Documents/dev/texmoon/document.tex {}.tex".format(args.docname))
+os.system("cp ~/Documents/dev/latex-templates/document.tex {}.tex".format(args.docname))
 if args.new:
-    os.system("cp ~/Documents/dev/texmoon/preamble.tex .")
+    os.system("cp ~/Documents/dev/latex-templates/preamble.tex .")
