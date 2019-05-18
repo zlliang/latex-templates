@@ -3,65 +3,49 @@
 % ------------------------------------------------------------------
 
 % --- Document Class -----------------------------------------------
-\documentclass[UTF-8]{article}  % English
-% \documentclass[UTF-8]{ctexart}  % Chinese
+\documentclass{article}  % English
+% \documentclass{ctexart}  % Chinese
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
 \usepackage{geometry}  % Geometry
 \usepackage{fancyhdr}  % Page-head and page-foot
-\usepackage[bookmarksnumbered=true]{hyperref}  % Hyper-reference
-\usepackage{makeidx}  % Index
-% \usepackage{fontspec,xeCJK}  % XeLaTeX Font setting
-\usepackage{pifont}  % Circled number
-\usepackage[perpage]{footmisc}  % Initialize footnote number every page
+\usepackage{hyperref}  % Hyperlinks
 \usepackage{setspace}  % Line space
 \usepackage{graphicx}  % Graphics
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
-\usepackage{caption,subcaption}  % Caption 
+\usepackage{caption,subcaption}  % Caption
 \usepackage{xcolor,tcolorbox}  % Color and colored text box
 \usepackage[thmmarks]{ntheorem}  % Theorem environment
 \usepackage{amsmath,amssymb,bm}  % AMS math symbols
 \usepackage{cases}  % Cases for math
-\usepackage{xfrac}  % Fraction
 \usepackage{units}  % Units
-\usepackage{listings}  % Code environment
-\usepackage{algorithmicx,algpseudocode}  % Pseudocode
-\usepackage{tikz}  % TikZ
-  \usetikzlibrary{positioning}  % Relative position 
-  \usetikzlibrary{cd}  % Change diagram
-  \usetikzlibrary{automata}  % Automata
-  \usetikzlibrary{backgrounds}
-  \usetikzlibrary{fit}
-  % \usetikzlibrary{external}  % External cache
+\usepackage{minted}  % Code environment
+\usepackage{algorithm,algorithmicx,algpseudocode}  % Pseudocode
+\usepackage{tikz,pgfplots}  % TikZ and PGFPlots
+\usetikzlibrary{positioning}  % Relative position 
+\usetikzlibrary{cd}  % Change diagram
+\usetikzlibrary{backgrounds}  % Backgrounds
+\usetikzlibrary{fit}  % Fit
+\usetikzlibrary{intersections}  % Fit
+\pgfplotsset{compat=1.16}
 % ------------------------------------------------------------------
 
 % --- Settings -----------------------------------------------------
-% --- Geometry
+% --- Geometry and Hyperlink
 \geometry{a4paper,centering,scale=0.75}
+\hypersetup{pdfborder={0 0 0},bookmarksnumbered=true}
 % --- Page style (page head and page foot)
 \pagestyle{plain}
+\usemintedstyle{friendly}
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
 % --- Bibliography format
 \bibliographystyle{siamplain}  % Using SIAM style
-% --- Footnote format
-% \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
 % --- Connect theorem environemts with sections
 % \numberwithin{equation}{section}
 % \numberwithin{figure}{section}
 % \numberwithin{table}{section}
-% ------------------------------------------------------------------
-
-% --- New Environments ---------------------------------------------
-% --- Inline quote
-\newcommand{\ilquote}[1]{{\slshape {#1}}}
-% --- Short quote
-\newenvironment{pquote}{\begin{quote} \slshape}{\end{quote}}
-% --- Block quote
-\newenvironment{bquote}{\begin{quotation} \slshape}{\end{quotation}}
-% --- Emphasize
-\renewcommand{\emph}[1]{{\textbf{#1}}}
 % ------------------------------------------------------------------
 
 % --- New Math Commands and Environments ---------------------------
@@ -69,21 +53,21 @@
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
 \DeclareMathOperator{\mspan}{span}  % Spanning space
 \DeclareMathOperator{\rank}{rank}  % Rank
-\newcommand{\trans}{\mathrm{T}}  % Transpose
-\newcommand{\ctrans}{\mathrm{*}}  % Conjugate transpose
-\newcommand{\mo}[1]{\left| {#1} \right|}  % Mod
-\newcommand{\norm}[1]{\left\| {#1} \right\|}  % Norm
+\renewcommand{\t}{\mathrm{T}}  % Transpose
+\newcommand{\h}{\mathrm{*}}  % Conjugate transpose
+\newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
+\newcommand{\norm}[1]{\left\|{#1}\right\|}  % Norm
 \newcommand{\numset}{\mathbb}  % Number sets
 \newcommand{\conj}{\overline}  % Conjugate
-\newcommand{\all}{\forall \,}  % For all
-\newcommand{\exi}{\exists \,}  % Exists
-\newcommand{\me}{\mathrm{e}}  % e
-\newcommand{\mi}{\mathrm{i}}  % i
-\newcommand{\st}{\, \mathrm{s.t.} \,}  % "So that"
-\newcommand{\diff}{\mathop{}\!\mathrm{d}}  % Differentiation
-\newcommand{\pdiff}{\mathop{}\!\partial}  % Partial diff
-\renewcommand{\hat}{\widehat}
-\renewcommand{\tilde}{\widetilde}
+\newcommand{\all}{\forall\,}  % For all
+\newcommand{\exi}{\exists\,}  % Exists
+\newcommand{\e}{\mathrm{e}}  % e
+\renewcommand{\i}{\mathrm{i}}  % i
+\newcommand{\st}{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
+\renewcommand{\d}{\mathop{}\!\mathrm{d}}  % Differentiation
+\newcommand{\pd}{\mathop{}\!\partial}  % Partial diff
+\renewcommand{\hat}{\widehat}  % Wide hat
+\renewcommand{\tilde}{\widetilde}  % Wide tilde
 \DeclareMathOperator*{\argmax}{argmax}  % argmax
 \DeclareMathOperator*{\argmin}{argmin}  % argmin
 \renewcommand{\qed}{\hfill\ensuremath{\square}}  % End of proof
@@ -100,48 +84,4 @@
   {\theoremstyle{nonumberplain} \theoremsymbol{\mbox{$\Box$}}
   \newtheorem{proof}{\textit{Proof.}}}  % Proof
 }
-% ------------------------------------------------------------------
-
-% --- TikZ Settings ------------------------------------------------
-% --- Cache
-% \tikzexternalize[prefix=TikZ-Temp/]
-
-% --- Global settings
-\tikzset{shorten >=1pt,node distance=3cm,on grid,auto,
-         every state/.style={draw=none,fill=black!15},
-         accepting/.style={draw=black!60,very thick,fill=black!15},
-         every node/.style={font=\small}, bend angle=60}
-% ------------------------------------------------------------------
-
-% --- Engineering Settings -----------------------------------------
-% --- Code
-\lstset{
-  columns=fullflexible,
-  basicstyle=\ttfamily,
-  keepspaces=true,
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\footnotesize\ttfamily\color{gray},
-  frame=none,
-  commentstyle=\ttfamily\color{gray},
-  defaultdialect=[LaTeX]TeX
-}
-% Pseudocode
-\algrenewcommand{\algorithmiccomment}[1]{\hskip3em%
-  \textcolor{gray}{\ttfamily\slshape // #1}}
-\algnewcommand{\LComment}[1]{\textcolor{gray}%
-  {\ttfamily\slshape // #1}}
-\algrenewtext{For}[2]{\algorithmicfor\ #1 \textbf{to}\ #2%
-  \algorithmicdo}
-\algnewcommand{\Returns}{\textbf{returns}\ }
-\newcommand{\hy}{\text{-}}
-% ------------------------------------------------------------------
-
-% --- New Engineering Environments ---------------------------------
-% --- Codeblock (Usage: \codeblock[language=lang]{filename})
-\newcommand{\codeblock}[2][]{\begin{spacing}{1.0}%
-  \lstinputlisting[#1]{#2}\end{spacing}}
-% --- Pseudocode (pcode)
-\newenvironment{pcode}{\smallskip\begin{spacing}{1.1}\begin{algorithmic}%
-  \upshape}{\end{algorithmic}\end{spacing}}
 % ------------------------------------------------------------------

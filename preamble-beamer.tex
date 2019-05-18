@@ -3,14 +3,13 @@
 % ------------------------------------------------------------------
 
 % --- Document Class -----------------------------------------------
-\documentclass[UTF-8]{beamer}  % English
-% \documentclass[UTF-8,9pt]{ctexbeamer}  % Chinese
+\documentclass{beamer}  % English
+% \documentclass[9pt]{ctexbeamer}  % Chinese
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
 \usepackage{amsmath,amssymb,bm}  % AMS math symbols
 \usepackage{cases}  % Cases for math
-\usepackage{xfrac}  % Fraction
 \usepackage{units}  % Units
 \usepackage{setspace}  % Line space
 \usepackage{graphicx}  % Graphics
@@ -27,19 +26,24 @@
 % ------------------------------------------------------------------
 
 % --- New Math Symbols --------------------------------------------
-\newcommand{\diag}{\mathrm{diag}}  % Diagonal matrix
-\newcommand{\trans}{\mathrm{T}}  % Transpose
-\newcommand{\mo}[1]{\left| {#1} \right|}  % Mod
-\newcommand{\norm}[1]{\left\| {#1} \right\|}  % Norm
+\DeclareMathOperator{\diag}{diag}  % Diagonal matrix
+\DeclareMathOperator{\mspan}{span}  % Spanning space
+\DeclareMathOperator{\rank}{rank}  % Rank
+\renewcommand{\t}{\mathrm{T}}  % Transpose
+\newcommand{\h}{\mathrm{*}}  % Conjugate transpose
+\newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
+\newcommand{\norm}[1]{\left\|{#1}\right\|}  % Norm
 \newcommand{\numset}{\mathbb}  % Number sets
 \newcommand{\conj}{\overline}  % Conjugate
-\newcommand{\all}{\forall \,}  % For all
-\newcommand{\exi}{\exists \,}  % Exists
-\newcommand{\me}{\mathrm{e}}  % e
-\newcommand{\mi}{\mathrm{i}}  % i
-\newcommand{\st}{\, \mathrm{s.t.} \,}  % "So that"
-\newcommand{\diff}{\mathop{}\!\mathrm{d}}  % Differentiation
-\newcommand{\pdiff}{\mathop{}\!\partial}  % Partial diff
+\newcommand{\all}{\forall\,}  % For all
+\newcommand{\exi}{\exists\,}  % Exists
+\newcommand{\e}{\mathrm{e}}  % e
+\renewcommand{\i}{\mathrm{i}}  % i
+\newcommand{\st}{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
+\renewcommand{\d}{\mathop{}\!\mathrm{d}}  % Differentiation
+\newcommand{\pd}{\mathop{}\!\partial}  % Partial diff
+\renewcommand{\hat}{\widehat}  % Wide hat
+\renewcommand{\tilde}{\widetilde}  % Wide tilde
 \DeclareMathOperator*{\argmax}{argmax}  % argmax
 \DeclareMathOperator*{\argmin}{argmin}  % argmin
 % ------------------------------------------------------------------
