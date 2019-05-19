@@ -8,20 +8,17 @@
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
-\usepackage{geometry}  % Geometry
-\usepackage{fancyhdr}  % Page-head and page-foot
-\usepackage{hyperref}  % Hyperlinks
-\usepackage{setspace}  % Line space
-\usepackage{graphicx}  % Graphics
+\usepackage{geometry,fancyhdr,setspace}  % Geometry and line space
+\usepackage{hyperref,cite}  % Complicated links and citations
+\usepackage{float,graphicx}  % Graphics
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
 \usepackage{caption,subcaption}  % Caption
 \usepackage{xcolor,tcolorbox}  % Color and colored text box
 \usepackage[thmmarks]{ntheorem}  % Theorem environment
-\usepackage{amsmath,amssymb,bm}  % AMS math symbols
-\usepackage{cases}  % Cases for math
-\usepackage{units}  % Units
-\usepackage{minted}  % Code environment
-\usepackage{algorithm,algorithmicx,algpseudocode}  % Pseudocode
+\usepackage{amsmath,amssymb,bm,mathtools}  % AMS math symbols and tools
+\usepackage{cleveref}  % Clever refs
+\usepackage{cases,units}  % Cases and units for math
+\usepackage{algorithm,algorithmicx,algpseudocode,minted}  % Pseudocode and code
 \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
 \usetikzlibrary{positioning}  % Relative position 
 \usetikzlibrary{cd}  % Change diagram
@@ -51,8 +48,20 @@
 % --- New Math Commands and Environments ---------------------------
 % --- Symbols
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
+\DeclareMathOperator{\tridiag}{tridiag}  % Tridiagonal matrix
+\DeclareMathOperator{\tr}{tr}  % Trace
 \DeclareMathOperator{\mspan}{span}  % Spanning space
 \DeclareMathOperator{\rank}{rank}  % Rank
+\DeclareMathOperator{\hess}{Hess}  % Hessian
+\DeclareMathOperator{\prob}{P}  % Probability
+\DeclareMathOperator{\expct}{E}  % Expectation
+\DeclareMathOperator{\cov}{cov}  % Covariance
+\DeclareMathOperator{\grad}{grad}  % Gradient
+\DeclareMathOperator{\range}{range}  % Range
+\DeclareMathOperator{\fl}{fl}  % Floating point number
+\DeclareMathOperator{\sgn}{sgn}  % Sign function
+\DeclareMathOperator*{\argmax}{argmax}  % argmax
+\DeclareMathOperator*{\argmin}{argmin}  % argmin
 \renewcommand{\t}{\mathrm{T}}  % Transpose
 \newcommand{\h}{\mathrm{*}}  % Conjugate transpose
 \newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
@@ -68,19 +77,20 @@
 \newcommand{\pd}{\mathop{}\!\partial}  % Partial diff
 \renewcommand{\hat}{\widehat}  % Wide hat
 \renewcommand{\tilde}{\widetilde}  % Wide tilde
-\DeclareMathOperator*{\argmax}{argmax}  % argmax
-\DeclareMathOperator*{\argmin}{argmin}  % argmin
+\renewcommand{\leq}{\leqslant}  % Less than or equal to
+\renewcommand{\geq}{\geqslant}  % Greater than or equal to
 \renewcommand{\qed}{\hfill\ensuremath{\square}}  % End of proof
 % --- Theorem environments
 {
+  \theoremheaderfont{\scshape}
   \theorembodyfont{\itshape}
-  \newtheorem{definition}{\textsc{Definition}}[section]  % Definition
-  \newtheorem{theorem}{\textsc{Theorem}}[section]  % Theorem
-  \newtheorem{proposition}{\textsc{Proposition}}[section]  % Proposition
-  \newtheorem{corollary}{\textsc{Corollary}}[section]  % Corollary
-  \newtheorem{lemma}{\textsc{Lemma}}[section]  % Lemma
-  \newtheorem{example}{\textsc{Example}}[section]  % Example
-  \newtheorem{alg}{\textsc{Algorithm}}[section]  % Algorithm
+  \newtheorem{definition}{Definition}  % Definition
+  \newtheorem{theorem}{Theorem}  % Theorem
+  \newtheorem{proposition}{Proposition}  % Proposition
+  \newtheorem{corollary}{Corollary}  % Corollary
+  \newtheorem{lemma}{Lemma}  % Lemma
+  \newtheorem{example}{Example}  % Example
+  \newtheorem{alg}{Algorithm}  % Algorithm
   {\theoremstyle{nonumberplain} \theoremsymbol{\mbox{$\Box$}}
   \newtheorem{proof}{\textit{Proof.}}}  % Proof
 }
