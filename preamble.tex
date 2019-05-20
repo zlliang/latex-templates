@@ -10,7 +10,6 @@
 % --- Packages -----------------------------------------------------
 \usepackage{geometry,fancyhdr,setspace}  % Geometry and line space
 \usepackage{titling}  % Title format
-\usepackage[style,runin]{abstract}  % Abstract format
 \usepackage[sc]{titlesec}  % Section title format
 \usepackage{hyperref,cite}  % Complicated links and citations
 \usepackage{float,graphicx}  % Graphics
@@ -35,7 +34,7 @@
 % --- Geometry and Hyperlink
 \geometry{a4paper,centering,scale=0.75}
 \hypersetup{pdfborder={0 0 0},bookmarksnumbered=true}
-% --- Page style (page head and page foot)
+% --- Page style
 \pagestyle{plain}
 \pretitle{\vspace{-2cm}\begin{flushleft}\scshape\Large}
 \posttitle{\end{flushleft}}
@@ -43,10 +42,10 @@
 \postauthor{\end{flushleft}}
 \predate{\begin{flushleft}\scshape}
 \postdate{\end{flushleft}}
-\renewcommand{\abstractnamefont}{\scshape\underline}
-\abslabeldelim{\quad}
-\setlength{\absleftindent}{0mm}
-\setlength{\absrightindent}{0mm}
+\renewenvironment{abstract}{\begin{tcolorbox}
+  [colback=white,colframe=black,boxrule=0.2mm,sharp corners]
+  \small\textsc{\underline{Abstract}}\quad}{\end{tcolorbox}}
+\newcommand{\keywords}[1]{\vspace{2mm}\par\textsc{\underline{Keywords}}\quad{#1}}
 \usemintedstyle{friendly}
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
