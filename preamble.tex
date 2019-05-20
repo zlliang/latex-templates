@@ -9,6 +9,9 @@
 
 % --- Packages -----------------------------------------------------
 \usepackage{geometry,fancyhdr,setspace}  % Geometry and line space
+\usepackage{titling}  % Title format
+\usepackage[style,runin]{abstract}  % Abstract format
+\usepackage[sc]{titlesec}  % Section title format
 \usepackage{hyperref,cite}  % Complicated links and citations
 \usepackage{float,graphicx}  % Graphics
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
@@ -34,6 +37,16 @@
 \hypersetup{pdfborder={0 0 0},bookmarksnumbered=true}
 % --- Page style (page head and page foot)
 \pagestyle{plain}
+\pretitle{\vspace{-2cm}\begin{flushleft}\scshape\Large}
+\posttitle{\end{flushleft}}
+\preauthor{\begin{flushleft}\scshape}
+\postauthor{\end{flushleft}}
+\predate{\begin{flushleft}\scshape}
+\postdate{\end{flushleft}}
+\renewcommand{\abstractnamefont}{\scshape\underline}
+\abslabeldelim{\quad}
+\setlength{\absleftindent}{0mm}
+\setlength{\absrightindent}{0mm}
 \usemintedstyle{friendly}
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
