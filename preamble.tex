@@ -9,8 +9,6 @@
 
 % --- Packages -----------------------------------------------------
 \usepackage{geometry,fancyhdr,setspace}  % Geometry and line space
-\usepackage{titling}  % Title format
-\usepackage[bf,sf]{titlesec}  % Section title format
 \usepackage{hyperref,cite}  % Complicated links and citations
 \usepackage{float,graphicx}  % Graphics
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
@@ -36,16 +34,6 @@
 \hypersetup{pdfborder={0 0 0},bookmarksnumbered=true}
 % --- Page style
 \pagestyle{plain}
-\pretitle{\vspace{-2cm}\begin{flushleft}\bfseries\sffamily\LARGE}
-\posttitle{\end{flushleft}}
-\preauthor{\begin{flushleft}}
-\postauthor{\end{flushleft}}
-\predate{\begin{flushleft}}
-\postdate{\end{flushleft}}
-\renewenvironment{abstract}{\begin{tcolorbox}
-  [colback=white,colframe=black,boxrule=0.2mm,sharp corners]
-  \small{\bfseries\sffamily Abstract}\quad}{\end{tcolorbox}}
-\newcommand{\keywords}[1]{\vspace{2mm}\par{\bfseries\sffamily Keywords}\quad{#1}}
 \usemintedstyle{friendly}
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
