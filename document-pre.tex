@@ -18,14 +18,14 @@
 \usepackage{amsmath,amssymb,bm,mathtools}  % AMS math symbols and tools
 \usepackage{cleveref}  % Clever refs
 \usepackage{cases,units}  % Cases and units for math
-\usepackage{algorithm,algorithmicx,algpseudocode,minted}  % Pseudocode and code
-\usepackage{tikz,pgfplots}  % TikZ and PGFPlots
-\usetikzlibrary{positioning}  % Relative position 
-\usetikzlibrary{cd}  % Change diagram
-\usetikzlibrary{backgrounds}  % Backgrounds
-\usetikzlibrary{fit}  % Fit
-\usetikzlibrary{intersections}  % Fit
-\pgfplotsset{compat=1.16}
+% \usepackage{algorithm,algorithmicx,algpseudocode,minted}  % Code
+% \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
+% \usetikzlibrary{positioning}  % Relative position 
+% \usetikzlibrary{cd}  % Change diagram
+% \usetikzlibrary{backgrounds}  % Backgrounds
+% \usetikzlibrary{fit}  % Fit
+% \usetikzlibrary{intersections}  % Fit
+% \pgfplotsset{compat=1.16}
 % ------------------------------------------------------------------
 
 % --- Settings -----------------------------------------------------
@@ -41,7 +41,7 @@
 }
 % --- Page style
 \pagestyle{plain}
-\usemintedstyle{friendly}
+% \usemintedstyle{friendly}  % Source code style
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
 % --- Bibliography format
@@ -74,6 +74,8 @@
 \newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
 \newcommand{\norm}[1]{\left\|{#1}\right\|}  % Norm
 \newcommand{\numset}{\mathbb}  % Number sets
+\newcommand{\R}{\numset{R}}  % Real number set
+\newcommand{\C}{\numset{C}}  % Complex number set
 \newcommand{\conj}{\overline}  % Conjugate
 \newcommand{\all}{\forall\,}  % For all
 \newcommand{\exi}{\exists\,}  % Exists
@@ -90,21 +92,19 @@
 \renewcommand{\r}{\right}  % Right
 \renewcommand{\qed}{\hfill\ensuremath{\square}}  % End of proof
 % --- Theorem environments
-{
-  \theoremheaderfont{\scshape}
-  \theorembodyfont{\itshape}
-  \newtheorem{definition}{Definition}  % Definition
-  \newtheorem{theorem}{Theorem}  % Theorem
-  \newtheorem{proposition}{Proposition}  % Proposition
-  \newtheorem{corollary}{Corollary}  % Corollary
-  \newtheorem{lemma}{Lemma}  % Lemma
-  \newtheorem{example}{Example}  % Example
-  \newtheorem{alg}{Algorithm}  % Algorithm
-  {\theoremstyle{nonumberplain} \theoremsymbol{\mbox{$\Box$}}
-  \newtheorem{proof}{\textit{Proof.}}}  % Proof
-}
+\theoremheaderfont{\scshape}
+\theorembodyfont{\itshape}
+\newtheorem{definition}{Definition}  % Definition
+\newtheorem{theorem}{Theorem}  % Theorem
+\newtheorem{proposition}{Proposition}  % Proposition
+\newtheorem{corollary}{Corollary}  % Corollary
+\newtheorem{lemma}{Lemma}  % Lemma
+\newtheorem{example}{Example}  % Example
+\newtheorem{alg}{Algorithm}  % Algorithm
+{\theoremstyle{nonumberplain} \theoremsymbol{\mbox{$\Box$}}
+\newtheorem{proof}{\textit{Proof.}}}  % Proof
 % --- Algorithm
-\floatname{algorithm}{\normalfont\textsc{Algorithm}}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
+% \floatname{algorithm}{\normalfont\textsc{Algorithm}}
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \renewcommand{\algorithmicensure}{\textbf{Output:}}
 % ------------------------------------------------------------------
