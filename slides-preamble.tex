@@ -4,13 +4,12 @@
 
 % --- Document Class -----------------------------------------------
 \documentclass{beamer}  % English
-% \documentclass[9pt]{ctexbeamer}  % Chinese
+% \documentclass[fontset=mac]{ctexbeamer}  % Chinese
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
 \usepackage{amsmath,amssymb,bm}  % AMS math symbols
-\usepackage{cases}  % Cases for math
-\usepackage{units}  % Units
+\usepackage{cases,units}  % Cases and units for math
 \usepackage{setspace}  % Line space
 \usepackage{graphicx}  % Graphics
 \usepackage{caption,subcaption}  % Caption 
@@ -18,48 +17,49 @@
 % ------------------------------------------------------------------
 
 % --- Beamer Settings ----------------------------------------------
-\usetheme{default}
-\usecolortheme{spruce}
+\useoutertheme{infolines}
 \usefonttheme{professionalfonts}
-\bibliographystyle{apalike}
+\usecolortheme{whale}
+\usecolortheme{orchid}
 \setbeamertemplate{navigation symbols}{}
+% --- Show table of contents at section beginnings
+\AtBeginSection{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 % ------------------------------------------------------------------
 
 % --- New Math Symbols --------------------------------------------
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
-\DeclareMathOperator{\tridiag}{tridiag}  % Tridiagonal matrix
 \DeclareMathOperator{\tr}{tr}  % Trace
-\DeclareMathOperator{\mspan}{span}  % Spanning space
 \DeclareMathOperator{\rank}{rank}  % Rank
-\DeclareMathOperator{\hess}{Hess}  % Hessian
-\DeclareMathOperator{\prob}{P}  % Probability
-\DeclareMathOperator{\expct}{E}  % Expectation
+\DeclareMathOperator{\Hess}{Hess}  % Hessian
+\DeclareMathOperator{\Prob}{P}  % Probability
+\DeclareMathOperator{\E}{E}  % Expectation
 \DeclareMathOperator{\cov}{cov}  % Covariance
 \DeclareMathOperator{\grad}{grad}  % Gradient
-\DeclareMathOperator{\range}{range}  % Range
-\DeclareMathOperator{\fl}{fl}  % Floating point number
 \DeclareMathOperator{\sgn}{sgn}  % Sign function
 \DeclareMathOperator*{\argmax}{argmax}  % argmax
 \DeclareMathOperator*{\argmin}{argmin}  % argmin
-\renewcommand{\t}{\mathrm{T}}  % Transpose
-\newcommand{\h}{\mathrm{*}}  % Conjugate transpose
-\newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
-\newcommand{\norm}[1]{\left\|{#1}\right\|}  % Norm
-\newcommand{\numset}{\mathbb}  % Number sets
-\newcommand{\R}{\numset{R}}  % Real number set
-\newcommand{\C}{\numset{C}}  % Complex number set
-\newcommand{\conj}{\overline}  % Conjugate
-\newcommand{\all}{\forall\,}  % For all
-\newcommand{\exi}{\exists\,}  % Exists
-\newcommand{\e}{\mathrm{e}}  % e
-\renewcommand{\i}{\mathrm{i}}  % i
-\newcommand{\st}{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
-\renewcommand{\d}{\mathop{}\!\mathrm{d}}  % Differentiation
-\newcommand{\pd}{\mathop{}\!\partial}  % Partial diff
-\renewcommand{\hat}{\widehat}  % Wide hat
-\renewcommand{\tilde}{\widetilde}  % Wide tilde
-\renewcommand{\leq}{\leqslant}  % Less than or equal to
-\renewcommand{\geq}{\geqslant}  % Greater than or equal to
-\renewcommand{\l}{\left}  % Left
-\renewcommand{\r}{\right}  % Right
+\def\l{\left}  % Left
+\def\r{\right}  % Right
+\def\t{\mathrm{T}}  % Transpose
+\def\h{\mathrm{*}}  % Conjugate transpose
+\def\abs#1{\l|{#1}\r|}  % Mod
+\def\norm#1{\l\|{#1}\r\|}  % Norm
+\def\numset{\mathbb}  % Number sets
+\def\R{\numset{R}}  % Real number set
+\def\C{\numset{C}}  % Complex number set
+\def\conj{\overline}  % Conjugate
+\def\e{\mathrm{e}}  % e
+\def\i{\mathrm{i}}  % i
+\def\d{\mathop{}\!\mathrm{d}}  % Differentiation
+\def\pd{\mathop{}\!\partial}  % Partial diff
+\def\hat#1{\widehat{#1}}  % Wide hat
+\def\tilde#1{\widetilde{#1}}  % Wide tilde
+\def\geq{\geqslant}  % Greater than
+\def\leq{\leqslant}  % Less than
+\def\qed{\hfill\ensuremath{\square}}  % End of proof
+\def\st{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
 % ------------------------------------------------------------------

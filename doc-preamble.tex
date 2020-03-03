@@ -4,7 +4,7 @@
 
 % --- Document Class -----------------------------------------------
 \documentclass{article}  % English
-% \documentclass[fontset=macold]{ctexart}  % Chinese
+% \documentclass[fontset=mac]{ctexart}  % Chinese
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
@@ -19,7 +19,8 @@
 \usepackage{amsmath,amssymb,bm,mathtools}  % AMS math symbols and tools
 \usepackage{cleveref}  % Clever refs
 \usepackage{cases,units}  % Cases and units for math
-% \usepackage{algorithm,algorithmicx,algpseudocode,minted}  % Code
+% \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
+% \usepackage{minted}  % Code
 % \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
 % \usetikzlibrary{positioning}  % Relative position 
 % \usetikzlibrary{cd}  % Change diagram
@@ -47,7 +48,7 @@
 % --- Vertical spaces for float object (for Chinese articles)
 % \renewcommand\arraystretch{1.3}
 % --- Bibliography format
-\bibliographystyle{siamplain}  % Using SIAM style
+\bibliographystyle{plain}
 % --- Connect theorem environemts with sections
 % \numberwithin{equation}{section}
 % \numberwithin{figure}{section}
@@ -57,56 +58,56 @@
 % --- New Math Commands and Environments ---------------------------
 % --- Symbols
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
-\DeclareMathOperator{\tridiag}{tridiag}  % Tridiagonal matrix
 \DeclareMathOperator{\tr}{tr}  % Trace
-\DeclareMathOperator{\mspan}{span}  % Spanning space
 \DeclareMathOperator{\rank}{rank}  % Rank
-\DeclareMathOperator{\hess}{Hess}  % Hessian
-\DeclareMathOperator{\prob}{P}  % Probability
-\DeclareMathOperator{\expct}{E}  % Expectation
+\DeclareMathOperator{\Hess}{Hess}  % Hessian
+\DeclareMathOperator{\Prob}{P}  % Probability
+\DeclareMathOperator{\E}{E}  % Expectation
 \DeclareMathOperator{\cov}{cov}  % Covariance
 \DeclareMathOperator{\grad}{grad}  % Gradient
-\DeclareMathOperator{\range}{range}  % Range
-\DeclareMathOperator{\fl}{fl}  % Floating point number
 \DeclareMathOperator{\sgn}{sgn}  % Sign function
 \DeclareMathOperator*{\argmax}{argmax}  % argmax
 \DeclareMathOperator*{\argmin}{argmin}  % argmin
-\renewcommand{\t}{\mathrm{T}}  % Transpose
-\newcommand{\h}{\mathrm{*}}  % Conjugate transpose
-\newcommand{\mo}[1]{\left|{#1}\right|}  % Mod
-\newcommand{\norm}[1]{\left\|{#1}\right\|}  % Norm
-\newcommand{\numset}{\mathbb}  % Number sets
-\newcommand{\R}{\numset{R}}  % Real number set
-\newcommand{\C}{\numset{C}}  % Complex number set
-\newcommand{\conj}{\overline}  % Conjugate
-\newcommand{\all}{\forall\,}  % For all
-\newcommand{\exi}{\exists\,}  % Exists
-\newcommand{\e}{\mathrm{e}}  % e
-\renewcommand{\i}{\mathrm{i}}  % i
-\newcommand{\st}{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
-\renewcommand{\d}{\mathop{}\!\mathrm{d}}  % Differentiation
-\newcommand{\pd}{\mathop{}\!\partial}  % Partial diff
-\renewcommand{\hat}{\widehat}  % Wide hat
-\renewcommand{\tilde}{\widetilde}  % Wide tilde
-\renewcommand{\leq}{\leqslant}  % Less than or equal to
-\renewcommand{\geq}{\geqslant}  % Greater than or equal to
-\renewcommand{\l}{\left}  % Left
-\renewcommand{\r}{\right}  % Right
-\renewcommand{\qed}{\hfill\ensuremath{\square}}  % End of proof
+\def\l{\left}  % Left
+\def\r{\right}  % Right
+\def\t{\mathrm{T}}  % Transpose
+\def\h{\mathrm{*}}  % Conjugate transpose
+\def\abs#1{\l|{#1}\r|}  % Mod
+\def\norm#1{\l\|{#1}\r\|}  % Norm
+\def\numset{\mathbb}  % Number sets
+\def\R{\numset{R}}  % Real number set
+\def\C{\numset{C}}  % Complex number set
+\def\conj{\overline}  % Conjugate
+\def\e{\mathrm{e}}  % e
+\def\i{\mathrm{i}}  % i
+\def\d{\mathop{}\!\mathrm{d}}  % Differentiation
+\def\pd{\mathop{}\!\partial}  % Partial diff
+\def\hat#1{\widehat{#1}}  % Wide hat
+\def\tilde#1{\widetilde{#1}}  % Wide tilde
+\def\geq{\geqslant}  % Greater than
+\def\leq{\leqslant}  % Less than
+\def\qed{\hfill\ensuremath{\square}}  % End of proof
+\def\st{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
 % --- Theorem environments
-\theoremheaderfont{\scshape}
-\theorembodyfont{\itshape}
 \newtheorem{definition}{Definition}  % Definition
 \newtheorem{theorem}{Theorem}  % Theorem
 \newtheorem{proposition}{Proposition}  % Proposition
 \newtheorem{corollary}{Corollary}  % Corollary
 \newtheorem{lemma}{Lemma}  % Lemma
 \newtheorem{example}{Example}  % Example
-\newtheorem{alg}{Algorithm}  % Algorithm
-{\theoremstyle{nonumberplain} \theoremsymbol{\mbox{$\Box$}}
-\newtheorem{proof}{\textit{Proof.}}}  % Proof
+{\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
+\theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{\textit{Proof.}}  % Proof
+% --- Theorem environments for Chinese documents
+% \newtheorem{definition}{定义}  % Definition
+% \newtheorem{theorem}{定理}  % Theorem
+% \newtheorem{proposition}{命题}  % Proposition
+% \newtheorem{corollary}{推论}  % Corollary
+% \newtheorem{lemma}{引理}  % Lemma
+% \newtheorem{example}{例}  % Example
+% {\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
+% \theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{证明}  % Proof
 % --- Algorithm
-% \floatname{algorithm}{\normalfont\textsc{Algorithm}}
+% \floatname{algorithm}{Algorithm}
 % \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 % \renewcommand{\algorithmicensure}{\textbf{Output:}}
 % ------------------------------------------------------------------
