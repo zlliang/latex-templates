@@ -14,13 +14,21 @@
 \usepackage{graphicx}  % Graphics
 \usepackage{caption,subcaption}  % Caption 
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
+% \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
+% \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
+% \usetikzlibrary{positioning}  % Relative position 
+% \usetikzlibrary{cd}  % Change diagram
+% \usetikzlibrary{backgrounds}  % Backgrounds
+% \usetikzlibrary{fit}  % Fit
+% \usetikzlibrary{intersections}  % Fit
+% \pgfplotsset{compat=1.16}
 % ------------------------------------------------------------------
 
 % --- Beamer Settings ----------------------------------------------
 \useoutertheme{infolines}
-\usefonttheme{professionalfonts}
-\usecolortheme{whale}
-\usecolortheme{orchid}
+\usefonttheme[onlymath]{serif}
+\usecolortheme[RGB={0,92,175}]{structure}
+\usecolortheme{whale}\usecolortheme{orchid}
 \setbeamertemplate{navigation symbols}{}
 % --- Show table of contents at section beginnings
 \AtBeginSection{
@@ -30,7 +38,7 @@
 }
 % ------------------------------------------------------------------
 
-% --- New Math Symbols --------------------------------------------
+% --- New Math Symbols ---------------------------------------------
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
 \DeclareMathOperator{\tr}{tr}  % Trace
 \DeclareMathOperator{\rank}{rank}  % Rank
@@ -62,4 +70,9 @@
 \def\leq{\leqslant}  % Less than
 \def\qed{\hfill\ensuremath{\square}}  % End of proof
 \def\st{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
+% ------------------------------------------------------------------
+
+% --- Algorithm ----------------------------------------------------
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \renewcommand{\algorithmicensure}{\textbf{Output:}}
 % ------------------------------------------------------------------
