@@ -2,9 +2,17 @@
 %     LaTeX Preamble -- Personal documents of Zilong Liang
 % ------------------------------------------------------------------
 
-% --- Document Class -----------------------------------------------
-\documentclass{article}  % English
-% \documentclass[fontset=mac]{ctexart}  % Chinese
+% --- Flags --------------------------------------------------------
+% \def\cn{true}  % Uncomment if the document is in Chinese
+% \def\tx{true}  % Uncomment if the document uses the Times fonts
+% ------------------------------------------------------------------
+
+% --- Document class -----------------------------------------------
+\ifx\cn\undefined
+  \documentclass{article}
+\else
+  \documentclass[fontset=macold]{ctexart}
+\fi
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
@@ -14,9 +22,11 @@
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
 \usepackage{caption,subcaption}  % Caption
 \usepackage{enumitem}  % Better lists
-\usepackage{xcolor,tcolorbox}  % Color and colored text box
+\usepackage{xcolor}  % Color
 \usepackage[thmmarks]{ntheorem}  % Theorem environment
-\usepackage{amsmath,amssymb,bm,mathtools}  % AMS math symbols and tools
+\usepackage{amsmath,amssymb,mathtools}  % AMS math symbols and tools
+\ifdefined\tx \usepackage{newtxtext,newtxmath} \fi  % Times fonts
+\usepackage{bm}  % Bold symbols
 \usepackage{cleveref}  % Clever refs
 \usepackage{cases,units}  % Cases and units for math
 % \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
@@ -37,16 +47,16 @@
 \hypersetup{
   pdfborder={0 0 0},
   colorlinks=true,
-  linkcolor=blue,
+  linkcolor=violet,
   citecolor=teal,
   urlcolor=purple,
   bookmarksnumbered=true
 }
 % --- Page style
 \pagestyle{plain}
-% \usemintedstyle{friendly}  % Source code style
+\ifdefined\mint \usemintedstyle{friendly} \fi  % Source code style
 % --- Vertical spaces for float object (for Chinese articles)
-% \renewcommand\arraystretch{1.3}
+\ifdefined\cn \renewcommand\arraystretch{1.3} \fi
 % --- Bibliography format
 \bibliographystyle{plain}
 % --- Connect theorem environemts with sections
@@ -55,7 +65,7 @@
 % \numberwithin{table}{section}
 % ------------------------------------------------------------------
 
-% --- New Math Commands and Environments ---------------------------
+% --- New math commands and environments ---------------------------
 % --- Symbols
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
 \DeclareMathOperator{\tr}{tr}  % Trace
@@ -89,25 +99,33 @@
 \def\qed{\hfill\ensuremath{\square}}  % End of proof
 \def\st{\,\mathrm{s.t.}\,}  % "Such that" or "Subject to"
 % --- Theorem environments
-\newtheorem{definition}{Definition}  % Definition
-\newtheorem{theorem}{Theorem}  % Theorem
-\newtheorem{proposition}{Proposition}  % Proposition
-\newtheorem{corollary}{Corollary}  % Corollary
-\newtheorem{lemma}{Lemma}  % Lemma
-\newtheorem{example}{Example}  % Example
-{\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
-\theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{\textit{Proof.}}  % Proof
-% --- Theorem environments for Chinese documents
-% \newtheorem{definition}{定义}  % Definition
-% \newtheorem{theorem}{定理}  % Theorem
-% \newtheorem{proposition}{命题}  % Proposition
-% \newtheorem{corollary}{推论}  % Corollary
-% \newtheorem{lemma}{引理}  % Lemma
-% \newtheorem{example}{例}  % Example
-% {\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
-% \theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{证明}  % Proof
+\ifx\cn\undefined
+  \newtheorem{definition}{Definition}  % Definition
+  \newtheorem{theorem}{Theorem}  % Theorem
+  \newtheorem{proposition}{Proposition}  % Proposition
+  \newtheorem{corollary}{Corollary}  % Corollary
+  \newtheorem{lemma}{Lemma}  % Lemma
+  \newtheorem{example}{Example}  % Example
+  {\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
+  \theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{\textit{Proof.}}  % Proof
+\else
+  \newtheorem{definition}{定义}  % Definition
+  \newtheorem{theorem}{定理}  % Theorem
+  \newtheorem{proposition}{命题}  % Proposition
+  \newtheorem{corollary}{推论}  % Corollary
+  \newtheorem{lemma}{引理}  % Lemma
+  \newtheorem{example}{例}  % Example
+  {\theorembodyfont{\normalfont}\theoremstyle{nonumberplain}
+  \theoremsymbol{\mbox{$\Box$}}\newtheorem{proof}{证明}  % Proof
+\fi
 % --- Algorithm
-% \floatname{algorithm}{Algorithm}
-% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
-% \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\ifdefined\State
+  \ifx\cn\undefined
+    \floatname{algorithm}{Algorithm}
+  \else
+    \floatname{algorithm}{算法}
+  \fi
+  \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+  \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\fi
 % ------------------------------------------------------------------

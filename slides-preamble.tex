@@ -1,10 +1,34 @@
 % ------------------------------------------------------------------
-%     LaTeX Preamble -- Presentation Documents of Zilong Liang
+%     LaTeX Preamble -- Presentation Slides of Zilong Liang
 % ------------------------------------------------------------------
 
-% --- Document Class -----------------------------------------------
-\documentclass{beamer}  % English
-% \documentclass[fontset=mac]{ctexbeamer}  % Chinese
+% --- Flags --------------------------------------------------------
+% \def\cn{true}  % Uncomment if the document is in Chinese
+% ------------------------------------------------------------------
+
+% --- Document class -----------------------------------------------
+\ifx\cn\undefined
+  \documentclass{beamer}
+\else
+  \documentclass{ctexbeamer}
+\fi
+% ------------------------------------------------------------------
+
+% --- Language specific settings -----------------------------------
+\ifx\cn\undefined
+  \def\outline{Outline}
+  \usepackage{sansmathfonts,mathbbol}
+  \renewcommand{\sfdefault}{cmss}
+\else
+  \def\outline{大纲}
+  \usefonttheme[onlymath]{serif}
+  \renewcommand{\CJKsfdefault}{方正悠黑简体 506L}
+  \setCJKsansfont[
+    BoldFont={方正悠黑简体 510M},
+    BoldItalicFont={楷体-简 黑体},
+    ItalicFont={楷体-简}
+  ]{方正悠黑简体 506L}
+\fi
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
@@ -15,6 +39,7 @@
 \usepackage{caption,subcaption}  % Caption 
 \usepackage{tabularx,booktabs,threeparttable}  % Enhanced tabular
 % \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
+% \usepackage{minted}  % Code
 % \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
 % \usetikzlibrary{positioning}  % Relative position 
 % \usetikzlibrary{cd}  % Change diagram
@@ -24,21 +49,21 @@
 % \pgfplotsset{compat=1.16}
 % ------------------------------------------------------------------
 
-% --- Beamer Settings ----------------------------------------------
-\useoutertheme{infolines}
-\usefonttheme[onlymath]{serif}
+% --- Beamer settings ----------------------------------------------
+\useoutertheme{infolines}\setbeamertemplate{headline}{}
 \usecolortheme[RGB={0,92,175}]{structure}
 \usecolortheme{whale}\usecolortheme{orchid}
 \setbeamertemplate{navigation symbols}{}
+\ifdefined\mint \usemintedstyle{friendly} \fi  % Source code style
 % --- Show table of contents at section beginnings
 \AtBeginSection{
-  \begin{frame}{Outline}
+  \begin{frame}{\outline}
     \tableofcontents[currentsection]
   \end{frame}
 }
 % ------------------------------------------------------------------
 
-% --- New Math Symbols ---------------------------------------------
+% --- New math symbols ---------------------------------------------
 \DeclareMathOperator{\diag}{diag}  % Diagonal matrix
 \DeclareMathOperator{\tr}{tr}  % Trace
 \DeclareMathOperator{\rank}{rank}  % Rank
@@ -73,6 +98,8 @@
 % ------------------------------------------------------------------
 
 % --- Algorithm ----------------------------------------------------
-% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
-% \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\ifdefined\State
+  \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+  \renewcommand{\algorithmicensure}{\textbf{Output:}}
+\fi
 % ------------------------------------------------------------------
