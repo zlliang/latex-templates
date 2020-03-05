@@ -3,6 +3,7 @@
 % ------------------------------------------------------------------
 
 % --- Flags --------------------------------------------------------
+% \def\headlines{true}  % Uncomment if showing headlines
 % \def\cn{true}  % Uncomment if the document is in Chinese
 % \def\trans{true}  % Uncomment if creating transparencies
 % \def\handout{true}  % Uncomment if creating handouts
@@ -59,7 +60,15 @@
 % ------------------------------------------------------------------
 
 % --- Beamer settings ----------------------------------------------
-\useoutertheme{infolines}\setbeamertemplate{headline}{}
+\useoutertheme{infolines}
+\ifx\headlines\undefined
+  \setbeamertemplate{headline}{}
+\else
+  \setbeamercolor*{subsection in head/foot}{
+    parent=palette secondary
+  }
+\fi
+\setbeamersize{text margin left=2.5em,text margin right=2.5em}
 \usecolortheme[RGB={0,92,175}]{structure}
 \usecolortheme{whale}\usecolortheme{orchid}
 \setbeamertemplate{navigation symbols}{}
