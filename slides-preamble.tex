@@ -4,13 +4,22 @@
 
 % --- Flags --------------------------------------------------------
 % \def\cn{true}  % Uncomment if the document is in Chinese
+% \def\trans{true}  % Uncomment if creating transparencies
+% \def\handout{true}  % Uncomment if creating handouts
+% \def\withnotes{true}  % Uncomment if showing notes
 % ------------------------------------------------------------------
 
 % --- Document class -----------------------------------------------
 \ifx\cn\undefined
-  \documentclass{beamer}
+  \documentclass[
+    \ifdefined\trans{trans}\fi,
+    \ifdefined\handout{handout}\fi,
+  ]{beamer}
 \else
-  \documentclass{ctexbeamer}
+  \documentclass[
+    \ifdefined\trans{trans}\fi,
+    \ifdefined\handout{handout}\fi,
+  ]{ctexbeamer}
 \fi
 % ------------------------------------------------------------------
 
@@ -21,7 +30,7 @@
   \renewcommand{\sfdefault}{cmss}
 \else
   \def\outline{大纲}
-  \usefonttheme[onlymath]{serif}
+  \usefonttheme{professionalfonts}
   \renewcommand{\CJKsfdefault}{方正悠黑简体 506L}
   \setCJKsansfont[
     BoldFont={方正悠黑简体 510M},
@@ -60,6 +69,32 @@
   \begin{frame}{\outline}
     \tableofcontents[currentsection]
   \end{frame}
+}
+% --- Notes and handouts settings
+\ifdefined\withnotes
+  \usepackage{pgfpages}
+  \setbeameroption{show notes on second screen}
+\fi
+\mode<handout> {
+  \usepackage{pgfpages}
+  \usepackage[frame,noinfo]{crop}
+  \pgfpagesuselayout{4 on 1}[a4paper,landscape]
+  \pgfpageslogicalpageoptions{1}{
+    scale=0.9,
+    center=\pgfpoint{.28\pgfphysicalwidth}{.73\pgfphysicalheight}
+  }
+  \pgfpageslogicalpageoptions{2}{
+    scale=0.9,
+    center=\pgfpoint{.72\pgfphysicalwidth}{.73\pgfphysicalheight}
+  }
+  \pgfpageslogicalpageoptions{3}{
+    scale=0.9,
+    center=\pgfpoint{.28\pgfphysicalwidth}{.27\pgfphysicalheight}
+  }
+  \pgfpageslogicalpageoptions{4}{
+    scale=0.9,
+    center=\pgfpoint{.72\pgfphysicalwidth}{.27\pgfphysicalheight}
+  }
 }
 % ------------------------------------------------------------------
 
