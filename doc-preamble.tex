@@ -17,7 +17,7 @@
   \renewcommand{\CJKrmdefault}{\defaultChineseFont}
   \renewcommand{\CJKttdefault}{方正仿宋简体}
   \setCJKmainfont[
-    BoldFont={汉仪粗简黑简},
+    BoldFont={方正悠黑简体 509R},
     ItalicFont={楷体-简},
     BoldItalicFont={楷体-简 黑体}]
   {\defaultChineseFont}
@@ -33,8 +33,8 @@
 \usepackage{caption,subcaption}  % Caption
 \usepackage{enumitem}  % Better lists
 \usepackage{xcolor}  % Color
-\usepackage[thmmarks]{ntheorem}  % Theorem environment
 \usepackage{amsmath,amssymb,mathtools}  % AMS math symbols and tools
+\usepackage[amsmath,thmmarks]{ntheorem}  % Theorem environment
 \ifdefined\tx \usepackage{newtxtext,newtxmath} \fi  % Times fonts
 \usepackage{bm}  % Bold symbols
 \usepackage{cleveref}  % Clever refs
@@ -65,8 +65,6 @@
 % --- Page style
 \pagestyle{plain}
 \ifdefined\mint \usemintedstyle{friendly} \fi  % Source code style
-% --- Vertical spaces for float object (for Chinese articles)
-\ifdefined\cn \renewcommand\arraystretch{1.3} \fi
 % --- Bibliography format
 \bibliographystyle{plain}
 % --- Connect theorem environemts with sections
