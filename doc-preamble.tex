@@ -26,35 +26,39 @@
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
-\usepackage{geometry,fancyhdr}  % Page layout
+\usepackage{geometry}  % Page layout
 \usepackage{hyperref,cite}  % Complicated links and citations
-\usepackage{graphicx}  % Graphics
+\usepackage{xcolor,graphicx}  % Color and graphic
 \usepackage{tabularx,booktabs}  % Enhanced tabular
-\usepackage{caption}  % Caption
+\usepackage{caption,subcaption}  % Caption
 \usepackage{enumitem}  % Better lists
-\usepackage{xcolor}  % Color
 \usepackage{amsmath,amssymb,mathtools}  % AMS math symbols and tools
+\usepackage{cases,siunitx}  % Cases and units for math
 \usepackage[amsmath,thmmarks]{ntheorem}  % Theorem environment
 \ifdefined\tx \usepackage{newtxtext,newtxmath} \fi  % Times fonts
 \usepackage{bm}  % Bold symbols
 \usepackage{cleveref}  % Clever refs
-\usepackage{cases,siunitx}  % Cases and units for math
 % \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
 % \usepackage{minted}  % Code
-% \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
+% \usepackage{tikz}  % TikZ
+% \usepackage{pgfplots}\pgfplotsset{compat=1.16}  % PGFPlots
 % ------------------------------------------------------------------
 
 % --- Settings -----------------------------------------------------
 % --- Color, geometry and hyperlink
 \geometry{a4paper,centering,scale=0.75}
 \setlist{nosep}
+\definecolor{red}{RGB}{203,64,66}
+\definecolor{blue}{RGB}{0,92,175}
+\definecolor{green}{RGB}{0,137,108}
+\definecolor{purple}{RGB}{168,73,122}
 \hypersetup{
-  pdfborder={0 0 0},
+  bookmarksnumbered=true,
+  pdfborder=0 0 0,
   colorlinks=true,
-  linkcolor=violet,
-  citecolor=teal,
+  linkcolor=blue,
+  citecolor=green,
   urlcolor=purple,
-  bookmarksnumbered=true
 }
 % --- Page style
 \pagestyle{plain}

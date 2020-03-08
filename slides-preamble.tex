@@ -42,17 +42,22 @@
 % ------------------------------------------------------------------
 
 % --- Packages -----------------------------------------------------
-\usepackage{amsmath,amssymb,bm}  % AMS math symbols
+\usepackage{amsmath,amssymb,mathtools,bm}  % AMS math symbols
 \usepackage{cases,siunitx}  % Cases and units for math
-\usepackage{graphicx}  % Graphics
-\usepackage{caption}  % Caption 
+\usepackage{xcolor,graphicx}  % Color and graphic
+\usepackage{caption,subcaption}  % Caption 
 \usepackage{tabularx,booktabs}  % Enhanced tabular
 % \usepackage{algorithm,algorithmicx,algpseudocode}  % Pesudocode
 % \usepackage{minted}  % Code
-% \usepackage{tikz,pgfplots}  % TikZ and PGFPlots
+% \usepackage{tikz}  % TikZ
+% \usepackage{pgfplots}\pgfplotsset{compat=1.16}  % PGFPlots
 % ------------------------------------------------------------------
 
 % --- Beamer settings ----------------------------------------------
+\definecolor{red}{RGB}{203,64,66}
+\definecolor{blue}{RGB}{0,92,175}
+\definecolor{green}{RGB}{0,137,108}
+\definecolor{purple}{RGB}{168,73,122}
 \useoutertheme{infolines}
 \ifx\headlines\undefined
   \setbeamertemplate{headline}{}
@@ -62,7 +67,7 @@
   }
 \fi
 \setbeamersize{text margin left=2.5em,text margin right=2.5em}
-\usecolortheme[RGB={0,92,175}]{structure}
+\usecolortheme[named=blue]{structure}
 \usecolortheme{whale}\usecolortheme{orchid}
 \setbeamertemplate{navigation symbols}{}
 \ifdefined\mint \usemintedstyle{friendly} \fi  % Source code style
