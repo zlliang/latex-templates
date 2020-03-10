@@ -11,7 +11,7 @@
 \ifx\cn\undefined
   \documentclass{article}
 \else
-  \documentclass[fontset=macold]{ctexart}
+  \documentclass{ctexart}
   \ifdefined\tx \def\defaultChineseFont{方正新书宋简体}
   \else \def\defaultChineseFont{方正书宋简体} \fi
   \renewcommand{\CJKrmdefault}{\defaultChineseFont}
@@ -53,6 +53,11 @@
 \definecolor{blue}{RGB}{0,92,175}
 \definecolor{green}{RGB}{0,137,108}
 \definecolor{purple}{RGB}{168,73,122}
+\ifdefined\cn \def\emph#1{\textbf{#1}} \fi
+\def\red#1{\textcolor{red}#1}
+\def\blue#1{\textcolor{blue}{#1}}
+\def\green#1{\textcolor{green}{#1}}
+\def\purple#1{\textcolor{purple}{#1}}
 \hypersetup{
   bookmarksnumbered=true,
   pdfborder=0 0 0,
