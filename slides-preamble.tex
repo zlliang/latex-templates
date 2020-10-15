@@ -109,6 +109,8 @@
     center=\pgfpoint{.72\pgfphysicalwidth}{.27\pgfphysicalheight}
   }
 }
+% --- Fix the issue with active characters
+\def\temp{&} \catcode`&=\active \let&=\temp
 % ------------------------------------------------------------------
 
 % --- New math symbols ---------------------------------------------
